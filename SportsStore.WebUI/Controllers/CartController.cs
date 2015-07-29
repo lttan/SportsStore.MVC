@@ -26,6 +26,7 @@ namespace SportsStore.WebUI.Controllers
                             });
         }
 
+        // Insert item into cart
         public RedirectToRouteResult AddToCart(int productId, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
@@ -36,6 +37,7 @@ namespace SportsStore.WebUI.Controllers
             return RedirectToAction("Index", new { returnUrl });
         }
 
+        // Remove item from cart
         public RedirectToRouteResult RemoveFromCart(int productId, string returnUrl)
         {
             Product product = repository.Products.FirstOrDefault(p => p.ProductID == productId);
