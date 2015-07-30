@@ -9,6 +9,7 @@ using SportsStore.WebUI.Models;
 
 namespace SportsStore.WebUI.Controllers
 {
+    // link: https://sportsstorevs2011.codeplex.com/SourceControl/latest#SportsStoreMVC4/SportsStore/SportsStore.WebUI/Content/Site.css
     public class ProductController : Controller
     {
         private IProductRepository repository;
@@ -39,6 +40,19 @@ namespace SportsStore.WebUI.Controllers
                 CurrentCategory = category
             };
             return View(viewModel);
+        }
+
+        public FileContentResult GetImage(int productId)
+        {
+            Product prod = repository.Products.FirstOrDefault(p => p.ProductID == productId);
+            if (prod != null)
+            {
+                return File(prod.ImageData, prod.ImageMimeType);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 }
