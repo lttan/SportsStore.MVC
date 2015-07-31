@@ -8,6 +8,9 @@
 </head>
 <body>
     <div id="header">
+        <div id="admin">
+            @Html.ActionLink("Admin", "Login", "Account")
+        </div>
         @{ Html.RenderAction("Summary", "Cart"); }
         <div class="title">SPORTS STORE</div>
     </div>
